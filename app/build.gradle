@@ -31,10 +31,11 @@ dependencies {
     // rxandroid
     compile 'io.reactivex:rxandroid:1.1.0'
     // Okhttp3
-    compile 'com.squareup.okhttp3:okhttp:3.0.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     //Gson
     compile 'com.google.code.gson:gson:2.3.1'
     testCompile 'junit:junit:4.12'
     compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'org.mockito:mockito-core:2.2.5'
 }

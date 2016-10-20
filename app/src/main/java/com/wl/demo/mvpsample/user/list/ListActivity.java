@@ -1,12 +1,12 @@
 package com.wl.demo.mvpsample.user.list;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.wl.demo.mvpsample.R;
+import com.wl.demo.mvpsample.base.BaseActivity;
 import com.wl.demo.mvpsample.user.list.model.UserListModel;
 
 import butterknife.ButterKnife;
@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
  * Created by wangliang on 16-10-14.
  */
 
-public class ListActivity extends Activity implements ListContact.View {
+public class ListActivity extends BaseActivity implements ListContact.View {
     private static final String TAG = ListActivity.class.getSimpleName();
 
     private ListContact.Presenter mPresenter;
@@ -29,6 +29,8 @@ public class ListActivity extends Activity implements ListContact.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
+
+        initActionBarWithBack("列表");
 
         mPresenter = new ListPresenterImpl(this, this);
 
