@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.wl.demo.mvpsample.R;
 import com.wl.demo.mvpsample.base.BaseActivity;
 import com.wl.demo.mvpsample.user.list.ListActivity;
-import com.wl.demo.mvpsample.user.login.model.LoginResp;
+import com.wl.demo.mvpsample.net.resp.model.LoginResp;
 
 import butterknife.ButterKnife;
 

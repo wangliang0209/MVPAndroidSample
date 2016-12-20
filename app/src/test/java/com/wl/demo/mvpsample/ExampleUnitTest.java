@@ -1,6 +1,6 @@
 package com.wl.demo.mvpsample;
 
-import com.wl.demo.mvpsample.domain.UserInfo;
+import com.wl.demo.mvpsample.net.resp.model.UserDetailResp;
 import com.wl.demo.mvpsample.net.CommonRequest;
 import com.wl.demo.mvpsample.net.MySubscriber;
 
@@ -29,9 +29,9 @@ public class ExampleUnitTest {
     public void testAPI() {
 
         CommonRequest request = mock(CommonRequest.class); //new CommonRequest(null);//
-        MySubscriber<UserInfo> obj = new MySubscriber<UserInfo>() {
+        MySubscriber<UserDetailResp> obj = new MySubscriber<UserDetailResp>() {
             @Override
-            public void onSucc(UserInfo userInfo) {
+            public void onSucc(UserDetailResp userInfo) {
                 //Log.d("WLTest", "onSucc");
             }
 

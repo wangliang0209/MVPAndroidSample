@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/layout_bucket_pop_container"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_alignParentBottom="true"
+             android:orientation="vertical"
+             android:visibility="gone">
+
+    <FrameLayout
+        android:id="@+id/layout_bucket_pop_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/conver_bg_color"
+        />
+
+    <ListView
+        android:id="@+id/layout_bucket_pop_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:divider="@color/gray"
+        android:dividerHeight="0.5dp"
+        android:listSelector="@drawable/list_item"
+        android:scrollbarStyle="outsideOverlay"/>
+</FrameLayout>

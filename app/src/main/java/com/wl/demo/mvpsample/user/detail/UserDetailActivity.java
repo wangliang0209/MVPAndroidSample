@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import com.wl.demo.mvpsample.R;
 import com.wl.demo.mvpsample.base.BaseActivity;
-import com.wl.demo.mvpsample.domain.UserInfo;
+import com.wl.demo.mvpsample.net.resp.model.UserDetailResp;
 
 import butterknife.ButterKnife;
 
@@ -47,7 +47,7 @@ public class UserDetailActivity extends BaseActivity implements UserDetailContac
     }
 
     @Override
-    public void getDataSucc(UserInfo info) {
+    public void getDataSucc(UserDetailResp info) {
         //TODO 页面处理
         mNameTv.setText(info.getName());
         mAgeTv.setText(String.valueOf(info.getAge()));

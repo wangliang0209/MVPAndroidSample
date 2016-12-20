@@ -4,9 +4,8 @@ import android.content.Context;
 
 import com.wl.demo.mvpsample.net.CommonRequest;
 import com.wl.demo.mvpsample.net.MySubscriber;
-import com.wl.demo.mvpsample.user.login.model.LoginResp;
+import com.wl.demo.mvpsample.net.resp.model.LoginResp;
 import com.wl.demo.mvpsample.utils.CurUserHelper;
-import com.wl.demo.mvpsample.utils.SharedPrefUtil;
 
 /**
  * Created by wangliang on 16-10-20.

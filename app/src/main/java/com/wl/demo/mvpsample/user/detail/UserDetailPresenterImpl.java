@@ -2,7 +2,7 @@ package com.wl.demo.mvpsample.user.detail;
 
 import android.content.Context;
 
-import com.wl.demo.mvpsample.domain.UserInfo;
+import com.wl.demo.mvpsample.net.resp.model.UserDetailResp;
 import com.wl.demo.mvpsample.net.MySubscriber;
 
 /**
@@ -22,9 +22,9 @@ public class UserDetailPresenterImpl implements UserDetailContact.Presenter {
     @Override
     public void getData(String uid) {
         mMainView.showProgress();
-        mInteractor.getData(uid, new MySubscriber<UserInfo>() { //TODO T替换成返回的对象
+        mInteractor.getData(uid, new MySubscriber<UserDetailResp>() { //TODO T替换成返回的对象
             @Override
-            public void onSucc(UserInfo t) { //TODO T替换成返回的对象
+            public void onSucc(UserDetailResp t) { //TODO T替换成返回的对象
                 mMainView.hideProgress();
                 mMainView.getDataSucc(t);
             }

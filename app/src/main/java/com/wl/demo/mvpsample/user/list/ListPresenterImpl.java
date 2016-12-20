@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.wl.demo.mvpsample.net.CommonRequest;
 import com.wl.demo.mvpsample.net.MySubscriber;
-import com.wl.demo.mvpsample.user.list.model.UserListModel;
+import com.wl.demo.mvpsample.net.resp.model.UserListResp;
 
 /**
  * Created by wangliang on 16-10-14.
@@ -23,9 +23,9 @@ public class ListPresenterImpl implements ListContact.Presenter {
     @Override
     public void getData() {
         mMainView.showProgress();
-        mCommonRequest.getUserList(new MySubscriber<UserListModel>() {
+        mCommonRequest.getUserList(new MySubscriber<UserListResp>() {
             @Override
-            public void onSucc(UserListModel userListModel) {
+            public void onSucc(UserListResp userListModel) {
                 mMainView.hideProgress();
                 mMainView.getDataSucc(userListModel);
             }

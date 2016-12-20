@@ -1,10 +1,10 @@
-package com.wl.demo.mvpsample.domain;
+package com.wl.demo.mvpsample.net.resp.model;
 
 /**
  * Created by wangliang on 16-10-14.
  */
 
-public class UserInfo {
+public class UserDetailResp {
     private String uid;
     private String name;
     private int age;

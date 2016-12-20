@@ -18,6 +18,10 @@
         <activity android:name=".user.list.ListActivity" />
         <activity android:name=".user.detail.UserDetailActivity" />
         <activity android:name=".user.login.LoginActivity" />
+        <activity
+            android:name=".selector.DefaultSelectorActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".upload.UploadActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

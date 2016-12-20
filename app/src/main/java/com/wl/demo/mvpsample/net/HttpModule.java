@@ -68,7 +68,7 @@ public class HttpModule {
 //            Response response = chain.proceed(chain.request());  //如果401了，会先执行TokenAuthenticator
 //            if (response.code() == HTTP_CODE_AUTH_FAILED) {
 //                Log.d("WLTest", "response msg:" + response.body().string());
-//                com.wl.demo.mvpsample.domain.Response resp = new Gson().fromJson(response.body().string(), com.wl.demo.mvpsample.domain.Response.class);
+//                com.wl.demo.mvpsample.net.resp.model.base.Response resp = new Gson().fromJson(response.body().string(), com.wl.demo.mvpsample.net.resp.model.base.Response.class);
 //
 //                ApiException apiException = new ApiException(resp);
 //                throw  apiException;

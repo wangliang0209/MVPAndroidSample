@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="all_img_tag">所有图片</string>
+    <string name="take_photo">拍摄照片</string>
+</resources>

@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.wl.demo.mvpsample.R;
 import com.wl.demo.mvpsample.base.BaseActivity;
-import com.wl.demo.mvpsample.user.list.model.UserListModel;
+import com.wl.demo.mvpsample.net.resp.model.UserListResp;
 
 import butterknife.ButterKnife;
 
@@ -53,7 +53,7 @@ public class ListActivity extends BaseActivity implements ListContact.View {
     }
 
     @Override
-    public void getDataSucc(UserListModel model) {
+    public void getDataSucc(UserListResp model) {
         //TODO 页面处理
         if(model != null) {
             mAdapter.refreshData(model.getList());

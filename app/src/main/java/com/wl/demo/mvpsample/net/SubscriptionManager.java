@@ -74,6 +74,9 @@ public class SubscriptionManager {
     }
 
     public void clear() {
-        reqMap = null;
+        if(reqMap != null) {
+            reqMap.clear();
+            reqMap = null;
+        }
     }
 }

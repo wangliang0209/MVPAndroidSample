@@ -1,4 +1,4 @@
-package com.wl.demo.mvpsample.user.login.model;
+package com.wl.demo.mvpsample.net.resp.model;
 
 /**
  * Created by wangliang on 16-10-20.

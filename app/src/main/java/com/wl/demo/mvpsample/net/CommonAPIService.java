@@ -1,14 +1,18 @@
 package com.wl.demo.mvpsample.net;
 
-import com.wl.demo.mvpsample.domain.Response;
-import com.wl.demo.mvpsample.domain.UserInfo;
-import com.wl.demo.mvpsample.user.list.model.UserListModel;
-import com.wl.demo.mvpsample.user.login.model.LoginResp;
+import com.wl.demo.mvpsample.net.resp.model.UploadResp;
+import com.wl.demo.mvpsample.net.resp.model.base.Response;
+import com.wl.demo.mvpsample.net.resp.model.UserDetailResp;
+import com.wl.demo.mvpsample.net.resp.model.UserListResp;
+import com.wl.demo.mvpsample.net.resp.model.LoginResp;
 
+import okhttp3.RequestBody;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -19,13 +23,16 @@ import rx.Observable;
 public interface CommonAPIService {
 
     @GET("api/user/list")
-    Observable<Response<UserListModel>> userList(@Query("token") String token);
+    Observable<Response<UserListResp>> userList(@Query("token") String token);
 
     @GET("api/user/detail")
-    Observable<Response<UserInfo>> getUser(@Query("uid") String uid, @Query("token") String token);
+    Observable<Response<UserDetailResp>> getUser(@Query("uid") String uid, @Query("token") String token);
 
     @FormUrlEncoded
     @POST("api/login")
     Observable<Response<LoginResp>> login(@Field("username") String username, @Field("password") String password);
 
+    @Multipart
+    @POST("file/upload")
+    Observable<Response<UploadResp>> upload(@Part("filename") String filename, @Part("file\"; filename=\"image.png") RequestBody img);
 }

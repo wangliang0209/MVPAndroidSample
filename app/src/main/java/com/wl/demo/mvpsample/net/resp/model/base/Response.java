@@ -1,4 +1,4 @@
-package com.wl.demo.mvpsample.domain;
+package com.wl.demo.mvpsample.net.resp.model.base;
 
 /**
  * Created by wangliang on 16-9-28.
