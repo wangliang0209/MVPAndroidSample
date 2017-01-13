@@ -4,13 +4,13 @@ import android.content.Context;
 
 import com.wl.demo.mvpsample.common.AbsItemView;
 import com.wl.demo.mvpsample.common.MyBaseAdapter;
-import com.wl.demo.mvpsample.domain.UserInfo;
+import com.wl.demo.mvpsample.net.resp.model.UserDetailResp;
 
 /**
  * Created by wangliang on 16-10-14.
  */
 
-public class UserListAdapter extends MyBaseAdapter<UserInfo> {
+public class UserListAdapter extends MyBaseAdapter<UserDetailResp> {
 
     public UserListAdapter(Context context) {
         super(context);

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="48dp"
+              android:background="@color/colorBottomLayoutDefault"
+              android:orientation="horizontal"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin">
+
+
+    <TextView
+        android:id="@+id/layout_locaimg_bottom_bucket"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:drawableRight="@drawable/selector_arrow_down"
+        android:gravity="center_vertical"
+        android:textColor="@color/selector_bucket_name"
+        android:textSize="16sp"/>
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/layout_locaimg_bottom_preview"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|end"
+        android:text="预览"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="18sp"/>
+</LinearLayout>

@@ -1,7 +1,7 @@
 package com.wl.demo.mvpsample.net;
 
 
-import com.wl.demo.mvpsample.domain.Response;
+import com.wl.demo.mvpsample.net.resp.model.base.Response;
 
 /**
  * Created by wangliang on 16-9-30.

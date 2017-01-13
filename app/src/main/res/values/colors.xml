@@ -3,4 +3,25 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--字体颜色值-->
+    <color name="textColorPrimary">@color/colorDarkPrimaryText</color>
+    <color name="textColorSecond">@color/colorDarkSecondaryText</color>
+    <color name="textColorHint">@color/colorDarkHintText</color>
+    <color name="textColorDivider">@color/colorDarkDivider</color>
+
+    <!--dark text icon color-->
+    <color name="colorDarkPrimaryText">#323232</color>
+    <color name="colorDarkSecondaryText">#909090</color>
+    <color name="colorDarkHintText">#b4b4b4</color>
+    <color name="colorDarkDivider">#1F000000</color>
+    <!--light text icon color-->
+    <color name="colorLightPrimaryText">#FFFFFFFF</color>
+    <color name="colorLightSecondaryText">#B3FFFFFF</color>
+    <color name="colorLightHintText">#4CFFFFFF</color>
+    <color name="colorLightDivider">#1FFFFFFF</color>
+
+    <color name="colorBottomLayoutDefault">#515151</color>
+    <color name="colorTextPressed">#bfbfbf</color>
+    <color name="colorTextBgPressed">#414141</color>
 </resources>

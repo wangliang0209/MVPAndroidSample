@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.wl.demo.mvpsample.R;
 import com.wl.demo.mvpsample.common.AbsItemView;
-import com.wl.demo.mvpsample.domain.UserInfo;
+import com.wl.demo.mvpsample.net.resp.model.UserDetailResp;
 
 import butterknife.ButterKnife;
 
@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
  * Created by wangliang on 16-10-14.
  */
 
-public class UserListItemView extends AbsItemView<UserInfo> {
+public class UserListItemView extends AbsItemView<UserDetailResp> {
     private TextView mNameTv;
 
     private TextView mAgeTv;
@@ -32,7 +32,7 @@ public class UserListItemView extends AbsItemView<UserInfo> {
     }
 
     @Override
-    public void setData(UserInfo userInfo) {
+    public void setData(UserDetailResp userInfo) {
         mNameTv.setText(userInfo.getName());
         mAgeTv.setText(String.valueOf(userInfo.getAge()));
     }

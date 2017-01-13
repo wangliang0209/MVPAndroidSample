@@ -19,11 +19,16 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="测试用户列表接口"
+        android:text="登陆界面"
         android:onClick="test"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="测试用户接口"
         android:onClick="getUserById"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试上传"
+        android:onClick="gotoUploadDemo"/>
 </LinearLayout>
