@@ -6,5 +6,5 @@ package com.wl.demo.mvpsample.common;
 
 public final class Constant {
     public static final boolean DEBUG = true;
-    public static final String BASE_URL = "http://192.168.10.37:8081/ssm/";
+    public static final String BASE_URL = "http://192.168.10.37:8080/ssm/";
 }
