@@ -3,11 +3,13 @@ package com.wl.demo.mvpsample.base;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.wl.demo.mvpsample.net.SubscriptionManager;
+
 /**
  * Created by wangliang on 16-10-19.
  */
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     public void initActionBarWithoutBack(int rid) {
         initActionBarWithoutBack(getString(rid));
@@ -40,5 +42,14 @@ public class BaseActivity extends AppCompatActivity {
 
     public void optionsItemHomeMenuClick() {
         finish();
+    }
+
+    //用于唯一标示该Activity
+    public abstract String getTagName();
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SubscriptionManager.getInstance().cancelPendingRequests(getTagName());
     }
 }

@@ -9,14 +9,11 @@ import com.wl.demo.mvpsample.net.resp.model.UserListResp;
 public interface ListContact {
     interface View {
         void showProgress();
+
         void hideProgress();
 
         void getDataSucc(UserListResp data);
+
         void getDataFailed(String error);
     }
-
-    interface Presenter {
-        void getData();
-    }
-
 }

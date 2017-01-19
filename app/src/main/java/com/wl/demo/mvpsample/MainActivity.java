@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.wl.demo.mvpsample.base.BaseActivity;
-import com.wl.demo.mvpsample.net.SubscriptionManager;
 import com.wl.demo.mvpsample.upload.UploadActivity;
 import com.wl.demo.mvpsample.user.detail.UserDetailActivity;
 import com.wl.demo.mvpsample.user.login.LoginActivity;
@@ -35,8 +34,8 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        SubscriptionManager.getInstance().cancelPendingRequests(this);
+    public String getTagName() {
+        return MainActivity.class.getSimpleName();
     }
+
 }

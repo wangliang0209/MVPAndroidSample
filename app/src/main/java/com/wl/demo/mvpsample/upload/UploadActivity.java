@@ -36,13 +36,13 @@ public class UploadActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         List<ImageItem> list = AlbumHelper.getHasSelectImgs();
-        if(list != null) {
+        if (list != null) {
             for (int i = 0; i < list.size(); i++) {
                 Log.d("WLTest", list.get(i).imagePath);
-                new CommonRequest(this).upload(list.get(i).imagePath, new MySubscriber<UploadResp>() {
+                new CommonRequest(this, getTagName()).upload(list.get(i).imagePath, new MySubscriber<UploadResp>() {
                     @Override
                     public void onSucc(UploadResp uploadResp) {
-                        if(uploadResp.files != null) {
+                        if (uploadResp.files != null) {
                             for (int j = 0; j < uploadResp.files.size(); j++) {
                                 Log.d("WLTest", "onSucc " + uploadResp.files.get(j));
                             }
@@ -58,5 +58,10 @@ public class UploadActivity extends BaseActivity {
             }
         }
 
+    }
+
+    @Override
+    public String getTagName() {
+        return UploadActivity.class.getSimpleName();
     }
 }

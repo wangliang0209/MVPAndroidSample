@@ -8,9 +8,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.wl.demo.mvpsample.R;
-import com.wl.demo.mvpsample.base.BaseActivity;
-import com.wl.demo.mvpsample.user.list.ListActivity;
+import com.wl.demo.mvpsample.base.MVPActivity;
 import com.wl.demo.mvpsample.net.resp.model.LoginResp;
+import com.wl.demo.mvpsample.user.list.ListActivity;
 
 import butterknife.ButterKnife;
 
@@ -18,9 +18,8 @@ import butterknife.ButterKnife;
  * Created by wangliang on 16-10-20.
  */
 
-public class LoginActivity extends BaseActivity implements LoginContact.View {
+public class LoginActivity extends MVPActivity<LoginPresenter> implements LoginContact.View {
 
-    private LoginContact.Presenter mPresenter;
     private EditText mAccEt;
     private EditText mPwdEt;
     private Button mLoginBtn;
@@ -31,7 +30,6 @@ public class LoginActivity extends BaseActivity implements LoginContact.View {
         initActionBarWithBack("登陆");
         setContentView(R.layout.activity_login);
 
-        mPresenter = new LoginPresenterImpl(this, this);
 
         mAccEt = ButterKnife.findById(this, R.id.account_et);
         mPwdEt = ButterKnife.findById(this, R.id.pwd_et);
@@ -42,9 +40,14 @@ public class LoginActivity extends BaseActivity implements LoginContact.View {
                 String username = mAccEt.getText().toString();
                 String password = mPwdEt.getText().toString();
 
-                mPresenter.login(username, password);
+                presenter.login(username, password);
             }
         });
+    }
+
+    @Override
+    protected LoginPresenter initPresenter() {
+        return new LoginPresenter(this, this, getTagName());
     }
 
     @Override
@@ -66,5 +69,10 @@ public class LoginActivity extends BaseActivity implements LoginContact.View {
     @Override
     public void loginFailed(String error) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public String getTagName() {
+        return LoginActivity.class.getSimpleName();
     }
 }

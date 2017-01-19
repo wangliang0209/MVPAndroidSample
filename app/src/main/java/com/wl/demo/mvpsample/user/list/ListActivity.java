@@ -6,7 +6,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.wl.demo.mvpsample.R;
-import com.wl.demo.mvpsample.base.BaseActivity;
+import com.wl.demo.mvpsample.base.MVPActivity;
 import com.wl.demo.mvpsample.net.resp.model.UserListResp;
 
 import butterknife.ButterKnife;
@@ -15,10 +15,8 @@ import butterknife.ButterKnife;
  * Created by wangliang on 16-10-14.
  */
 
-public class ListActivity extends BaseActivity implements ListContact.View {
+public class ListActivity extends MVPActivity<ListPresenter> implements ListContact.View {
     private static final String TAG = ListActivity.class.getSimpleName();
-
-    private ListContact.Presenter mPresenter;
 
     private ListView mListView;
 
@@ -32,14 +30,18 @@ public class ListActivity extends BaseActivity implements ListContact.View {
 
         initActionBarWithBack("列表");
 
-        mPresenter = new ListPresenterImpl(this, this);
 
         mListView = ButterKnife.findById(this, R.id.user_list_lv);
 
         mAdapter = new UserListAdapter(this);
         mListView.setAdapter(mAdapter);
 
-        mPresenter.getData();
+        presenter.getData();
+    }
+
+    @Override
+    protected ListPresenter initPresenter() {
+        return new ListPresenter(this, this, getTagName());
     }
 
     @Override
@@ -55,7 +57,7 @@ public class ListActivity extends BaseActivity implements ListContact.View {
     @Override
     public void getDataSucc(UserListResp model) {
         //TODO 页面处理
-        if(model != null) {
+        if (model != null) {
             mAdapter.refreshData(model.getList());
         }
     }
@@ -63,5 +65,10 @@ public class ListActivity extends BaseActivity implements ListContact.View {
     @Override
     public void getDataFailed(String error) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public String getTagName() {
+        return ListActivity.class.getSimpleName();
     }
 }

@@ -1,12 +1,11 @@
 package com.wl.demo.mvpsample.net;
 
-import android.content.Context;
 import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import rx.Subscriber;
+import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -17,14 +16,16 @@ public class SubscriptionManager {
     private static final String TAG = SubscriptionManager.class.getSimpleName();
 
     private static SubscriptionManager instance;
-    private SubscriptionManager(){}
+
+    private SubscriptionManager() {
+    }
 
     public static SubscriptionManager getInstance() {
-        if(instance != null) {
+        if (instance != null) {
             return instance;
         }
         synchronized (SubscriptionManager.class) {
-            if(instance == null) {
+            if (instance == null) {
                 instance = new SubscriptionManager();
             }
 
@@ -34,36 +35,33 @@ public class SubscriptionManager {
 
     private Map<String, CompositeSubscription> reqMap = new HashMap<>();
 
-    public void putReq(String tag, Subscriber subscriber) {
+    public void putReq(String tag, Subscription subscription) {
         CompositeSubscription reqs = reqMap.get(tag);
-        if(reqs != null) {
-            reqs.add(subscriber);
+        if (reqs != null) {
+            reqs.add(subscription);
         } else {
             reqs = new CompositeSubscription();
-            reqs.add(subscriber);
+            reqs.add(subscription);
             reqMap.put(tag, reqs);
         }
         Log.d(TAG, "add req ");
     }
 
-    public void removeReq(String tag, Subscriber subscriber) {
+    public void removeReq(String tag, Subscription subscription) {
         CompositeSubscription reqs = reqMap.get(tag);
-        if(reqs != null) {
-            reqs.remove(subscriber);
+        if (reqs != null) {
+            reqs.remove(subscription);
             Log.d(TAG, "remove req ");
-            if(!reqs.hasSubscriptions()) {
+            if (!reqs.hasSubscriptions()) {
                 reqMap.remove(tag);
                 reqs = null;
             }
         }
     }
 
-    public void cancelPendingRequests(Context context) {
-        cancelPendingRequests(context.getClass().getSimpleName());
-    }
 
     public void cancelPendingRequests(String tag) {
-        if(tag != null) {
+        if (tag != null) {
             CompositeSubscription reqs = reqMap.get(tag);
             if (reqs != null) {
                 reqs.clear();
@@ -74,7 +72,7 @@ public class SubscriptionManager {
     }
 
     public void clear() {
-        if(reqMap != null) {
+        if (reqMap != null) {
             reqMap.clear();
             reqMap = null;
         }

@@ -1,13 +1,13 @@
 package com.wl.demo.mvpsample.net;
 
 import android.content.Context;
-import android.util.Log;
+import android.text.TextUtils;
 
+import com.wl.demo.mvpsample.net.resp.model.LoginResp;
 import com.wl.demo.mvpsample.net.resp.model.UploadResp;
-import com.wl.demo.mvpsample.net.resp.model.base.Response;
 import com.wl.demo.mvpsample.net.resp.model.UserDetailResp;
 import com.wl.demo.mvpsample.net.resp.model.UserListResp;
-import com.wl.demo.mvpsample.net.resp.model.LoginResp;
+import com.wl.demo.mvpsample.net.resp.model.base.Response;
 import com.wl.demo.mvpsample.utils.CurUserHelper;
 
 import java.io.File;
@@ -16,6 +16,7 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import rx.Observable;
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -29,21 +30,16 @@ public class CommonRequest {
     private Context mContext;
     private String mTag;
 
-    public CommonRequest(Context context) {
-        if(context != null) {
-            mContext = context.getApplicationContext();
-            if(mContext != null) {
-                mTag = context.getClass().getSimpleName();
-                Log.d("WLTest", ">>>> tag " + mTag);
-            } else {
-                mTag = "CommonRequest";
-            }
-        } else {
+    public CommonRequest(Context context, String tagName) {
+        mContext = context.getApplicationContext();
+
+        if (TextUtils.isEmpty(tagName)) {
             mTag = "CommonRequest";
+        } else {
+            mTag = tagName;
         }
-
-
     }
+
 
     public void getUserList(MySubscriber<UserListResp> subscriber) {
         Observable o = HttpModule.getInstance().getCommonAPIService().userList(CurUserHelper.getCurUserToken());
@@ -62,8 +58,8 @@ public class CommonRequest {
 
     public void upload(String filepath, MySubscriber<UploadResp> subscriber) {
         File file = new File(filepath);
-        if(!file.exists()) {
-            if(subscriber != null) {
+        if (!file.exists()) {
+            if (subscriber != null) {
                 subscriber.onError("文件不存在");
                 return;
             }
@@ -81,11 +77,12 @@ public class CommonRequest {
      * @param subscriber
      */
     private void doRequest(Observable o, Func1 func1, Subscriber subscriber) {
-        SubscriptionManager.getInstance().putReq(mTag, subscriber);
-        o.map(func1).subscribeOn(Schedulers.io())
+        Subscription s = o.map(func1)
+                .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
+        SubscriptionManager.getInstance().putReq(mTag, s);
     }
 
 

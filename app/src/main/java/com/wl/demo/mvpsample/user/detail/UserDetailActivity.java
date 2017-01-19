@@ -5,7 +5,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wl.demo.mvpsample.R;
-import com.wl.demo.mvpsample.base.BaseActivity;
+import com.wl.demo.mvpsample.base.MVPActivity;
 import com.wl.demo.mvpsample.net.resp.model.UserDetailResp;
 
 import butterknife.ButterKnife;
@@ -14,9 +14,7 @@ import butterknife.ButterKnife;
  * Created by wangliang on 16-10-14.
  */
 
-public class UserDetailActivity extends BaseActivity implements UserDetailContact.View {
-
-    private UserDetailContact.Presenter mPresenter;
+public class UserDetailActivity extends MVPActivity<UserDetailPresenter> implements UserDetailContact.View {
 
     private TextView mNameTv;
     private TextView mAgeTv;
@@ -31,9 +29,13 @@ public class UserDetailActivity extends BaseActivity implements UserDetailContac
         mNameTv = ButterKnife.findById(this, R.id.tv_name);
         mAgeTv = ButterKnife.findById(this, R.id.tv_age);
 
-        mPresenter = new UserDetailPresenterImpl(this, this);
 
-        mPresenter.getData("111");
+        presenter.getData("111");
+    }
+
+    @Override
+    protected UserDetailPresenter initPresenter() {
+        return new UserDetailPresenter(this, this, getTagName());
     }
 
     @Override
@@ -56,5 +58,10 @@ public class UserDetailActivity extends BaseActivity implements UserDetailContac
     @Override
     public void getDataFailed(String error) {
         Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public String getTagName() {
+        return UserDetailActivity.class.getSimpleName();
     }
 }
